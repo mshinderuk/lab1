@@ -7,7 +7,7 @@ class Product(models.Model):
     stock_quantity = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def str(self):
+    def __str__(self):  # Додано правильний синтаксис для метода
         return self.name
 
 class Order(models.Model):
@@ -17,5 +17,5 @@ class Order(models.Model):
     customer_email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def str(self):
-        return f"Order by {self.customer_name}"
+    def __str__(self):  # Тепер у замовленні буде видно назву продукту
+        return f"Order by {self.customer_name} - {self.product.name}"
